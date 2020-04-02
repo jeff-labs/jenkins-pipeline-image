@@ -5,12 +5,15 @@ MAINTAINER Jeff
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Dependencies
-RUN apt-get update && apt-get install --no-install-recommends -y sudo git build-essential curl gpg-agent gnupg ca-certificates software-properties-common awscli && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get update \
+  && apt-get install --no-install-recommends -y sudo git build-essential curl wget gpg-agent gnupg ca-certificates software-properties-common awscli \
+  && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Docker CE
-RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-RUN sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs) stable"
-RUN apt-get update && apt-get install --no-install-recommends -y docker-ce docker-ce-cli && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - \
+  && sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs) stable" \
+  && apt-get update && apt-get install --no-install-recommends -y docker-ce docker-ce-cli \
+  && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Jenkins user
 RUN groupadd --gid 1001 jenkins \

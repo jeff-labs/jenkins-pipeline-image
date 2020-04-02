@@ -8,6 +8,9 @@
 ### Node
 - `mrjeffapp/jenkins-pipeline-node8`
 - `mrjeffapp/jenkins-pipeline-node12`
+
+### Java
+- `mrjeffapp/jenkins-pipeline-java11`
  
 ## Examples
 ### Node pipeline

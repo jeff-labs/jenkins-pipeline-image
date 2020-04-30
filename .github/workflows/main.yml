@@ -14,5 +14,8 @@ jobs:
     - name: Build
       run: make build
 
+    - name: Log into registry
+        run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
+
     - name: Push
       run: echo "Hello"

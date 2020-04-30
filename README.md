@@ -6,18 +6,18 @@
 - `mrjeffapp/jenkins-pipeline-base`
 
 ### Node
-- `mrjeffapp/jenkins-pipeline-node8`
-- `mrjeffapp/jenkins-pipeline-node12`
+- `mrjeffapp/jenkins-pipeline-node:8`
+- `mrjeffapp/jenkins-pipeline-node:12`
 
 ### Java
-- `mrjeffapp/jenkins-pipeline-java11`
+- `mrjeffapp/jenkins-pipeline-java:11`
  
 ## Examples
 ### Node pipeline
 ```groovy
 pipeline {
     agent {
-        docker { image 'mrjeffapp/jenkins-pipeline-node8' }
+        docker { image 'mrjeffapp/jenkins-pipeline-node:8' }
     }
 
     stages {
@@ -38,7 +38,7 @@ pipeline {
 pipeline {
     agent {
         docker {
-            image 'mrjeffapp/jenkins-pipeline-node12'
+            image 'mrjeffapp/jenkins-pipeline-node:12'
             args '--group-add docker -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }

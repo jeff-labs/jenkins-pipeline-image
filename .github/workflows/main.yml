@@ -15,7 +15,7 @@ jobs:
       run: make build
 
     - name: Login
-        run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
+      run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
 
     - name: Push
       run: echo "Hello"

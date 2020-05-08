@@ -1,4 +1,4 @@
-# Jenkins pipeline docker images
+# Jenkins pipeline images
 
 Docker images to use as an agent in [Jenkins pipelines](https://www.jenkins.io/doc/book/pipeline/docker/).
 

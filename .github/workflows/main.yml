@@ -13,11 +13,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Build
+    - uses: azure/docker-login@v1
+      with:
+        username: ${{ secrets.DOCKER_HUB_USER }}
+        password: ${{ secrets.DOCKER_HUB_TOKEN }}
+
+    - name: Build images
       run: make build
 
-    - name: Login
-      run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
-
-    - name: Push
+    - name: Publish images
       run: make push

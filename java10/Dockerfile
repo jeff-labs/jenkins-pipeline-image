@@ -3,6 +3,8 @@ FROM mrjeffapp/jenkins-pipeline-base
 MAINTAINER Jeff
 
 ENV DEBIAN_FRONTEND=noninteractive
+ENV JAVA_HOME="/home/jenkins/.sdkman/candidates/java/current"
+ENV PATH="$JAVA_HOME/bin:$PATH"
 
 RUN curl -s "https://get.sdkman.io" | bash
 

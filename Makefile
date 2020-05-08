@@ -14,6 +14,7 @@ build:
 	docker tag 'mrjeffapp/jenkins-pipeline-node:12' 'mrjeffapp/jenkins-pipeline-node:latest'
 
 	docker build --no-cache -t 'mrjeffapp/jenkins-pipeline-java:8' --build-arg java_version=8 -f java/Dockerfile .
+	docker build --no-cache -t 'mrjeffapp/jenkins-pipeline-java:10' --build-arg java_version=10 -f java/Dockerfile .
 	docker build --no-cache -t 'mrjeffapp/jenkins-pipeline-java:11' --build-arg java_version=11 -f java/Dockerfile .
 	docker build --no-cache -t 'mrjeffapp/jenkins-pipeline-java:14' --build-arg java_version=14 -f java/Dockerfile .
 	docker tag 'mrjeffapp/jenkins-pipeline-java:14' 'mrjeffapp/jenkins-pipeline-java:latest'
@@ -28,6 +29,7 @@ push:
 	docker push 'mrjeffapp/jenkins-pipeline-node:latest'
 
 	docker push 'mrjeffapp/jenkins-pipeline-java:8'
+	docker push 'mrjeffapp/jenkins-pipeline-java:10'
 	docker push 'mrjeffapp/jenkins-pipeline-java:11'
 	docker push 'mrjeffapp/jenkins-pipeline-java:14'
 	docker push 'mrjeffapp/jenkins-pipeline-java:latest'
@@ -37,6 +39,7 @@ clean:
 	docker rmi 'mrjeffapp/jenkins-pipeline-java:latest'
 	docker rmi 'mrjeffapp/jenkins-pipeline-java:14'
 	docker rmi 'mrjeffapp/jenkins-pipeline-java:11'
+	docker rmi 'mrjeffapp/jenkins-pipeline-java:10'
 	docker rmi 'mrjeffapp/jenkins-pipeline-java:8'
 
 	docker rmi 'mrjeffapp/jenkins-pipeline-node:latest'

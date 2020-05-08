@@ -1,5 +1,9 @@
 # Jenkins pipeline docker images
 
+Docker images to use as an agent in [Jenkins pipelines](https://www.jenkins.io/doc/book/pipeline/docker/).
+
+Based in the [CircleCI images project](https://github.com/circleci/circleci-images) and the [Bitbucket pipelines default image](https://hub.docker.com/r/atlassian/default-image/)
+
 ## Images
 
 ### Base

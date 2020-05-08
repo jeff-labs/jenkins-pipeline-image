@@ -17,10 +17,11 @@ Based in the [CircleCI images project](https://github.com/circleci/circleci-imag
 
 ### [jenkins-pipeline-node](https://hub.docker.com/repository/docker/mrjeffapp/jenkins-pipeline-node)
 - `mrjeffapp/jenkins-pipeline-node:8`
+- `mrjeffapp/jenkins-pipeline-node:10`
 - `mrjeffapp/jenkins-pipeline-node:12`
 
 ###  [jenkins-pipeline-java](https://hub.docker.com/repository/docker/mrjeffapp/jenkins-pipeline-java)
-- `mrjeffapp/jenkins-pipeline-java:10`
+- `mrjeffapp/jenkins-pipeline-java:8`
 - `mrjeffapp/jenkins-pipeline-java:11`
 - `mrjeffapp/jenkins-pipeline-java:14`
  

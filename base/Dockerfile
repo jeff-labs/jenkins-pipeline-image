@@ -23,3 +23,6 @@ RUN groupadd --gid 1001 jenkins \
 
 USER jenkins
 WORKDIR /home/jenkins
+
+# Default git configuration
+RUN git config --global user.email "jenkins@localhost" && git config --global user.name "Jenkins"

@@ -10,7 +10,9 @@
 - `mrjeffapp/jenkins-pipeline-node:12`
 
 ### Java
+- `mrjeffapp/jenkins-pipeline-java:10`
 - `mrjeffapp/jenkins-pipeline-java:11`
+- `mrjeffapp/jenkins-pipeline-java:14`
  
 ## Examples
 ### Node pipeline

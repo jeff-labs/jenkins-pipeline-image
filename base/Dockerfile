@@ -6,8 +6,12 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Dependencies
 RUN apt-get update \
-  && apt-get install --no-install-recommends -y sudo git build-essential curl wget gpg-agent gnupg ca-certificates software-properties-common awscli zip unzip \
+  && apt-get install --no-install-recommends -y locales sudo git build-essential curl wget gpg-agent gnupg ca-certificates software-properties-common awscli zip unzip \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Use unicode
+RUN locale-gen C.UTF-8 || true
+ENV LANG=C.UTF-8
 
 # Docker CE
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - \

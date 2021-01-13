@@ -6,12 +6,11 @@ help:
 
 build-base:
 	@echo 'Building base docker image'
-	#docker build --no-cache -t 'mrjeffapp/jenkins-pipeline-base' -f base/Dockerfile .
-	docker build -t 'mrjeffapp/jenkins-pipeline-base' -f base/Dockerfile .
+	docker build --no-cache -t 'mrjeffapp/jenkins-pipeline-base' -f base/Dockerfile .
 
 build-php: build-base
 	@echo 'Building php docker images'
-	docker build -t 'mrjeffapp/jenkins-pipeline-php:7.2' --build-arg php_version=7.2 -f php/Dockerfile .
+	docker build --no-cache -t 'mrjeffapp/jenkins-pipeline-php:7.2' --build-arg php_version=7.2 -f php/Dockerfile .
 	docker tag 'mrjeffapp/jenkins-pipeline-php:7.2' 'mrjeffapp/jenkins-pipeline-php:latest'
 
 test-php:

@@ -21,5 +21,8 @@ jobs:
     - name: Build images
       run: make build
 
+    - name: Test images
+      run: make test
+
     - name: Publish images
       run: make push

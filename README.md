@@ -9,11 +9,12 @@ Based in the [CircleCI images project](https://github.com/circleci/circleci-imag
 
 ## Images
 
-### [jenkins-pipeline-base](https://hub.docker.com/repository/docker/mrjeffapp/jenkins-pipeline-base)
-- `mrjeffapp/jenkins-pipeline-base`
+### [jenkins-pipeline](https://hub.docker.com/repository/docker/mrjeffapp/jenkins-pipeline)
+- `mrjeffapp/jenkins-pipeline`
   - git
   - aws-cli
   - docker
+  - sonar-scanner
 
 ### [jenkins-pipeline-node](https://hub.docker.com/repository/docker/mrjeffapp/jenkins-pipeline-node)
 - `mrjeffapp/jenkins-pipeline-node:8`

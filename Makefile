@@ -1,3 +1,4 @@
+COMMIT:=$(shell git describe --always --tags)
 
 help:
 	@echo 'Help'
@@ -5,13 +6,19 @@ help:
 .DEFAULT_GOAL := help
 
 build-base:
-	@echo 'Building base docker image'
-	docker build --no-cache -t 'mrjeffapp/jenkins-pipeline-base' -f base/Dockerfile .
+	@echo "Building basic docker image"
+	docker build --no-cache -t "mrjeffapp/jenkins-pipeline:${COMMIT}" -f base/Dockerfile .
+	docker tag "mrjeffapp/jenkins-pipeline:${COMMIT}" 'mrjeffapp/jenkins-pipeline:latest'
+	docker tag "mrjeffapp/jenkins-pipeline:${COMMIT}" 'mrjeffapp/jenkins-pipeline-base:latest'
 
 build-php: build-base
 	@echo 'Building php docker images'
 	docker build --no-cache -t 'mrjeffapp/jenkins-pipeline-php:7.2' --build-arg php_version=7.2 -f php/Dockerfile .
 	docker tag 'mrjeffapp/jenkins-pipeline-php:7.2' 'mrjeffapp/jenkins-pipeline-php:latest'
+
+test-base:
+	docker run "mrjeffapp/jenkins-pipeline:${COMMIT}" git --version
+	docker run "mrjeffapp/jenkins-pipeline:${COMMIT}" aws --version
 
 test-php:
 	docker run mrjeffapp/jenkins-pipeline-php:latest php --version
@@ -39,7 +46,7 @@ build: build-base build-php
 	docker build --no-cache -t 'mrjeffapp/jenkins-pipeline-java:14' --build-arg java_version=14 -f java/Dockerfile .
 	docker tag 'mrjeffapp/jenkins-pipeline-java:14' 'mrjeffapp/jenkins-pipeline-java:latest'
 
-test: test-php
+test: test-base test-php
 
 push: push-php
 	@echo 'Push images'

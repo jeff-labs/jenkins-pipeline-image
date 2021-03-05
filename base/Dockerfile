@@ -2,6 +2,8 @@ FROM ubuntu:18.04
 
 MAINTAINER Jeff
 
+ARG sonar_scanner_version
+
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Dependencies
@@ -19,6 +21,14 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   && sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs) stable" \
   && apt-get update && apt-get install --no-install-recommends -y docker-ce docker-ce-cli \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Sonar Scanner
+RUN wget "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$sonar_scanner_version-linux.zip" \
+  && unzip "sonar-scanner-cli-$sonar_scanner_version-linux.zip" \
+  && mv "sonar-scanner-$sonar_scanner_version-linux" /opt/sonar-scanner \
+  && rm -rf "sonar-scanner-cli-$sonar_scanner_version-linux.zip"
+
+ENV PATH "$PATH:/opt/sonar-scanner/bin"
 
 # Jenkins user
 RUN groupadd --gid 1001 jenkins \

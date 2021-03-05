@@ -7,18 +7,19 @@ help:
 
 build-base:
 	@echo "Building basic docker image"
-	docker build --no-cache -t "mrjeffapp/jenkins-pipeline:${COMMIT}" -f base/Dockerfile .
+	docker build --no-cache -t "mrjeffapp/jenkins-pipeline:${COMMIT}" --build-arg sonar_scanner_version=4.6.0.2311 -f base/Dockerfile .
 	docker tag "mrjeffapp/jenkins-pipeline:${COMMIT}" 'mrjeffapp/jenkins-pipeline:latest'
 	docker tag "mrjeffapp/jenkins-pipeline:${COMMIT}" 'mrjeffapp/jenkins-pipeline-base:latest'
+
+test-base:
+	docker run "mrjeffapp/jenkins-pipeline:${COMMIT}" git --version
+	docker run "mrjeffapp/jenkins-pipeline:${COMMIT}" aws --version
+	docker run "mrjeffapp/jenkins-pipeline:${COMMIT}" sonar-scanner -v
 
 build-php: build-base
 	@echo 'Building php docker images'
 	docker build --no-cache -t 'mrjeffapp/jenkins-pipeline-php:7.2' --build-arg php_version=7.2 -f php/Dockerfile .
 	docker tag 'mrjeffapp/jenkins-pipeline-php:7.2' 'mrjeffapp/jenkins-pipeline-php:latest'
-
-test-base:
-	docker run "mrjeffapp/jenkins-pipeline:${COMMIT}" git --version
-	docker run "mrjeffapp/jenkins-pipeline:${COMMIT}" aws --version
 
 test-php:
 	docker run mrjeffapp/jenkins-pipeline-php:latest php --version
@@ -76,4 +77,6 @@ clean: clean-php
 	docker rmi 'mrjeffapp/jenkins-pipeline-node:10'
 	docker rmi 'mrjeffapp/jenkins-pipeline-node:8'
 
+	docker rmi 'mrjeffapp/jenkins-pipeline'
 	docker rmi 'mrjeffapp/jenkins-pipeline-base'
+	docker rmi "mrjeffapp/jenkins-pipeline:${COMMIT}"

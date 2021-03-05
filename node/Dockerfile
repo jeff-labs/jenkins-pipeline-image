@@ -1,4 +1,5 @@
-FROM mrjeffapp/jenkins-pipeline-base
+ARG base
+FROM mrjeffapp/jenkins-pipeline:$base
 
 MAINTAINER Jeff
 

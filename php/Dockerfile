@@ -1,4 +1,4 @@
-FROM mrjeffapp/jenkins-pipeline-base
+FROM mrjeffapp/jenkins-pipeline
 
 MAINTAINER Jeff
 

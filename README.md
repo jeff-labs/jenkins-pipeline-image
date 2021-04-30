@@ -20,6 +20,7 @@ Based in the [CircleCI images project](https://github.com/circleci/circleci-imag
 - `mrjeffapp/jenkins-pipeline-node:8`
 - `mrjeffapp/jenkins-pipeline-node:10`
 - `mrjeffapp/jenkins-pipeline-node:12`
+- `mrjeffapp/jenkins-pipeline-node:14`
 
 ###  [jenkins-pipeline-java](https://hub.docker.com/repository/docker/mrjeffapp/jenkins-pipeline-java)
 - `mrjeffapp/jenkins-pipeline-java:8`

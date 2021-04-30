@@ -41,7 +41,10 @@ build-node: build-base
 
 	docker build --no-cache -t "mrjeffapp/jenkins-pipeline-node:12-${COMMIT}" --build-arg base=${COMMIT} --build-arg node_version=12 -f node/Dockerfile .
 	docker tag "mrjeffapp/jenkins-pipeline-node:12-${COMMIT}" 'mrjeffapp/jenkins-pipeline-node:12'
-	docker tag 'mrjeffapp/jenkins-pipeline-node:12' 'mrjeffapp/jenkins-pipeline-node:latest'
+
+	docker build --no-cache -t "mrjeffapp/jenkins-pipeline-node:14-${COMMIT}" --build-arg base=${COMMIT} --build-arg node_version=14 -f node/Dockerfile .
+    docker tag "mrjeffapp/jenkins-pipeline-node:14-${COMMIT}" 'mrjeffapp/jenkins-pipeline-node:14'
+    docker tag 'mrjeffapp/jenkins-pipeline-node:14' 'mrjeffapp/jenkins-pipeline-node:latest'
 
 test-node:
 	docker run "mrjeffapp/jenkins-pipeline-node:8-${COMMIT}" node --version
@@ -54,6 +57,9 @@ test-node:
 	docker run "mrjeffapp/jenkins-pipeline-node:12-${COMMIT}" node --version
 	docker run "mrjeffapp/jenkins-pipeline-node:12-${COMMIT}" yarn --version
 
+    docker run "mrjeffapp/jenkins-pipeline-node:14-${COMMIT}" node --version
+    docker run "mrjeffapp/jenkins-pipeline-node:14-${COMMIT}" yarn --version
+
 push-node:
 	docker push "mrjeffapp/jenkins-pipeline-node:8-${COMMIT}"
 	docker push 'mrjeffapp/jenkins-pipeline-node:8'
@@ -63,7 +69,10 @@ push-node:
 
 	docker push "mrjeffapp/jenkins-pipeline-node:12-${COMMIT}"
 	docker push 'mrjeffapp/jenkins-pipeline-node:12'
-	docker push 'mrjeffapp/jenkins-pipeline-node:latest'
+
+	docker push "mrjeffapp/jenkins-pipeline-node:14-${COMMIT}"
+    docker push 'mrjeffapp/jenkins-pipeline-node:14'
+    docker push 'mrjeffapp/jenkins-pipeline-node:latest'
 
 build: build-base build-php build-node
 	@echo 'Build docker images'

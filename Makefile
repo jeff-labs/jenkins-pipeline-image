@@ -21,10 +21,18 @@ push-base:
 
 build-php: build-base
 	@echo 'Building php docker images'
-	docker build --no-cache -t 'mrjeffapp/jenkins-pipeline-php:7.2' --build-arg php_version=7.2 -f php/Dockerfile .
-	docker tag 'mrjeffapp/jenkins-pipeline-php:7.2' 'mrjeffapp/jenkins-pipeline-php:latest'
+	docker build --no-cache -t "mrjeffapp/jenkins-pipeline-php:7.2-${COMMIT}" --build-arg php_version=7.2 -f php/Dockerfile .
+	docker tag "mrjeffapp/jenkins-pipeline-php:7.2-${COMMIT}" 'mrjeffapp/jenkins-pipeline-php:7.2'
+
+	docker build --no-cache -t "mrjeffapp/jenkins-pipeline-php:7.4-${COMMIT}" --build-arg php_version=7.4 -f php/Dockerfile .
+	docker tag "mrjeffapp/jenkins-pipeline-php:7.4-${COMMIT}" 'mrjeffapp/jenkins-pipeline-php:7.4'
+	docker tag 'mrjeffapp/jenkins-pipeline-php:7.4' 'mrjeffapp/jenkins-pipeline-php:latest'
 
 test-php:
+	docker run mrjeffapp/jenkins-pipeline-php:7.2 php --version
+	docker run mrjeffapp/jenkins-pipeline-php:7.2 composer --version
+	docker run mrjeffapp/jenkins-pipeline-php:7.4 php --version
+	docker run mrjeffapp/jenkins-pipeline-php:7.4 composer --version
 	docker run mrjeffapp/jenkins-pipeline-php:latest php --version
 	docker run mrjeffapp/jenkins-pipeline-php:latest composer --version
 

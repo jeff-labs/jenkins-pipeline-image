@@ -30,6 +30,7 @@ Based in the [CircleCI images project](https://github.com/circleci/circleci-imag
 
 ###  [jenkins-pipeline-php](https://hub.docker.com/repository/docker/mrjeffapp/jenkins-pipeline-php)
 - `mrjeffapp/jenkins-pipeline-php:7.2`
+- `mrjeffapp/jenkins-pipeline-php:7.4`
  
 ## Examples
 ### Node pipeline

@@ -38,6 +38,7 @@ test-php:
 
 push-php:
 	docker push mrjeffapp/jenkins-pipeline-php:7.2
+	docker push mrjeffapp/jenkins-pipeline-php:7.4
 	docker push mrjeffapp/jenkins-pipeline-php:latest
 
 build-node: build-base

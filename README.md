@@ -27,6 +27,9 @@ Based in the [CircleCI images project](https://github.com/circleci/circleci-imag
 - `mrjeffapp/jenkins-pipeline-java:10`
 - `mrjeffapp/jenkins-pipeline-java:11`
 - `mrjeffapp/jenkins-pipeline-java:14`
+
+###  [jenkins-pipeline-php](https://hub.docker.com/repository/docker/mrjeffapp/jenkins-pipeline-php)
+- `mrjeffapp/jenkins-pipeline-php:7.2`
  
 ## Examples
 ### Node pipeline

@@ -24,7 +24,6 @@ Based in the [CircleCI images project](https://github.com/circleci/circleci-imag
 
 ###  [jenkins-pipeline-java](https://hub.docker.com/repository/docker/mrjeffapp/jenkins-pipeline-java)
 - `mrjeffapp/jenkins-pipeline-java:8`
-- `mrjeffapp/jenkins-pipeline-java:10`
 - `mrjeffapp/jenkins-pipeline-java:11`
 - `mrjeffapp/jenkins-pipeline-java:14`
 

@@ -7,7 +7,7 @@ help:
 
 build-base:
 	@echo "Building basic docker image"
-	docker build --no-cache -t "mrjeffapp/jenkins-pipeline:${COMMIT}" --build-arg sonar_scanner_version=4.6.0.2311 -f base/Dockerfile .
+	docker build --no-cache -t "mrjeffapp/jenkins-pipeline:${COMMIT}" --build-arg sonar_scanner_version=4.6.2.2472 -f base/Dockerfile .
 	docker tag "mrjeffapp/jenkins-pipeline:${COMMIT}" 'mrjeffapp/jenkins-pipeline:latest'
 
 test-base:

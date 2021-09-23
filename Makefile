@@ -29,15 +29,16 @@ build-php: build-base
 	docker tag 'mrjeffapp/jenkins-pipeline-php:7.4' 'mrjeffapp/jenkins-pipeline-php:latest'
 
 test-php:
-	docker run mrjeffapp/jenkins-pipeline-php:7.2 php --version
-	docker run mrjeffapp/jenkins-pipeline-php:7.2 composer --version
+	docker run "mrjeffapp/jenkins-pipeline-php:7.2-${COMMIT}" php --version
+	docker run "mrjeffapp/jenkins-pipeline-php:7.2-${COMMIT}" composer --version
 	docker run mrjeffapp/jenkins-pipeline-php:7.4 php --version
 	docker run mrjeffapp/jenkins-pipeline-php:7.4 composer --version
 	docker run mrjeffapp/jenkins-pipeline-php:latest php --version
 	docker run mrjeffapp/jenkins-pipeline-php:latest composer --version
 
 push-php:
-	docker push mrjeffapp/jenkins-pipeline-php:7.2
+	docker push "mrjeffapp/jenkins-pipeline-php:7.2-${COMMIT}"
+	docker push "mrjeffapp/jenkins-pipeline-php:7.2"
 	docker push mrjeffapp/jenkins-pipeline-php:7.4
 	docker push mrjeffapp/jenkins-pipeline-php:latest
 

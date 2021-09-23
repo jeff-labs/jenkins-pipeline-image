@@ -28,7 +28,7 @@ RUN wget "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-
   && mv "sonar-scanner-$sonar_scanner_version-linux" /opt/sonar-scanner \
   && rm -rf "sonar-scanner-cli-$sonar_scanner_version-linux.zip"
 
-ENV SONAR_SCANNER_OPTS "-Xmx512m"
+ENV SONAR_SCANNER_OPTS "-Xmx2048m"
 ENV PATH "$PATH:/opt/sonar-scanner/bin"
 
 # Jenkins user

@@ -39,8 +39,9 @@ test-php:
 push-php:
 	docker push "mrjeffapp/jenkins-pipeline-php:7.2-${COMMIT}"
 	docker push "mrjeffapp/jenkins-pipeline-php:7.2"
-	docker push mrjeffapp/jenkins-pipeline-php:7.4
-	docker push mrjeffapp/jenkins-pipeline-php:latest
+	docker push "mrjeffapp/jenkins-pipeline-php:7.4-${COMMIT}"
+	docker push "mrjeffapp/jenkins-pipeline-php:7.4"
+	docker push "mrjeffapp/jenkins-pipeline-php:latest"
 
 build-node: build-base
 	docker build --no-cache -t "mrjeffapp/jenkins-pipeline-node:8-${COMMIT}" --build-arg base=${COMMIT} --build-arg node_version=8 -f node/Dockerfile .

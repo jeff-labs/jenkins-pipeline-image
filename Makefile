@@ -14,6 +14,7 @@ test-base:
 	docker run "mrjeffapp/jenkins-pipeline:${COMMIT}" git --version
 	docker run "mrjeffapp/jenkins-pipeline:${COMMIT}" aws --version
 	docker run "mrjeffapp/jenkins-pipeline:${COMMIT}" sonar-scanner -v
+	docker run "mrjeffapp/jenkins-pipeline:${COMMIT}" helm version
 
 push-base:
 	docker push "mrjeffapp/jenkins-pipeline:${COMMIT}"

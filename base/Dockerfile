@@ -31,6 +31,12 @@ RUN wget "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-
 ENV SONAR_SCANNER_OPTS "-Xmx2048m"
 ENV PATH "$PATH:/opt/sonar-scanner/bin"
 
+# Helm
+RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 \
+    && chmod 700 get_helm.sh \
+    && DESIRED_VERSION=v3.7.0 ./get_helm.sh \
+    && rm -rf get_helm.sh
+
 # Jenkins user
 RUN groupadd --gid 1001 jenkins \
   && useradd --uid 1001 --gid jenkins -G docker --shell /bin/bash --create-home jenkins \

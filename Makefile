@@ -77,19 +77,33 @@ push-node:
 	docker push 'mrjeffapp/jenkins-pipeline-node:16'
 	docker push 'mrjeffapp/jenkins-pipeline-node:latest'
 
-build: build-base build-php build-node
+build-java: build-base
+	docker build --no-cache -t "mrjeffapp/jenkins-pipeline-java:8-${COMMIT}" --build-arg java_version=8 -f java/Dockerfile .
+	docker tag "mrjeffapp/jenkins-pipeline-java:8-${COMMIT}" 'mrjeffapp/jenkins-pipeline-java:8'
+
+	docker build --no-cache -t "mrjeffapp/jenkins-pipeline-java:11-${COMMIT}" --build-arg java_version=11 -f java/Dockerfile .
+	docker tag "mrjeffapp/jenkins-pipeline-java:11-${COMMIT}" 'mrjeffapp/jenkins-pipeline-java:11'
+
+	docker build --no-cache -t 'mrjeffapp/jenkins-pipeline-java:17' --build-arg java_version=17 -f java/Dockerfile .
+	docker tag "mrjeffapp/jenkins-pipeline-java:17-${COMMIT}" 'mrjeffapp/jenkins-pipeline-java:17'
+	docker tag 'mrjeffapp/jenkins-pipeline-java:17' 'mrjeffapp/jenkins-pipeline-java:latest'
+
+test-java:
+	docker run "mrjeffapp/jenkins-pipeline-java:17-${COMMIT}" java --version
+
+push-java:
+	docker push "mrjeffapp/jenkins-pipeline-java:8-${COMMIT}"
+	docker push 'mrjeffapp/jenkins-pipeline-java:8'
+	docker push "mrjeffapp/jenkins-pipeline-java:11-${COMMIT}"
+	docker push 'mrjeffapp/jenkins-pipeline-java:11'
+	docker push "mrjeffapp/jenkins-pipeline-java:17-${COMMIT}"
+	docker push 'mrjeffapp/jenkins-pipeline-java:17'
+	docker push 'mrjeffapp/jenkins-pipeline-java:latest'
+
+build: build-base build-php build-node build-java
 	@echo 'Build docker images'
 
-	docker build --no-cache -t 'mrjeffapp/jenkins-pipeline-java:8' --build-arg java_version=8 -f java/Dockerfile .
-	docker build --no-cache -t 'mrjeffapp/jenkins-pipeline-java:11' --build-arg java_version=11 -f java/Dockerfile .
-	docker build --no-cache -t 'mrjeffapp/jenkins-pipeline-java:14' --build-arg java_version=14 -f java/Dockerfile .
-	docker tag 'mrjeffapp/jenkins-pipeline-java:14' 'mrjeffapp/jenkins-pipeline-java:latest'
+test: test-base test-php test-node test-java
 
-test: test-base test-php test-node
-
-push: push-base push-php push-node
+push: push-base push-php push-node push-java
 	@echo 'Push images'
-	docker push 'mrjeffapp/jenkins-pipeline-java:8'
-	docker push 'mrjeffapp/jenkins-pipeline-java:11'
-	docker push 'mrjeffapp/jenkins-pipeline-java:14'
-	docker push 'mrjeffapp/jenkins-pipeline-java:latest'

@@ -27,7 +27,7 @@ build-php: build-base
 	docker build ${CACHE} -t "mrjeffapp/jenkins-pipeline-php:7.2-${COMMIT}" --build-arg php_version=7.2 -f php/Dockerfile .
 	docker tag "mrjeffapp/jenkins-pipeline-php:7.2-${COMMIT}" 'mrjeffapp/jenkins-pipeline-php:7.2'
 
-	docker build ${CACHE}--no-cache -t "mrjeffapp/jenkins-pipeline-php:7.4-${COMMIT}" --build-arg php_version=7.4 -f php/Dockerfile .
+	docker build ${CACHE} -t "mrjeffapp/jenkins-pipeline-php:7.4-${COMMIT}" --build-arg php_version=7.4 -f php/Dockerfile .
 	docker tag "mrjeffapp/jenkins-pipeline-php:7.4-${COMMIT}" 'mrjeffapp/jenkins-pipeline-php:7.4'
 	docker tag 'mrjeffapp/jenkins-pipeline-php:7.4' 'mrjeffapp/jenkins-pipeline-php:latest'
 

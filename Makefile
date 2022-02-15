@@ -29,21 +29,26 @@ build-php: build-base
 
 	docker build ${CACHE} -t "mrjeffapp/jenkins-pipeline-php:7.4-${COMMIT}" --build-arg php_version=7.4 -f php/Dockerfile .
 	docker tag "mrjeffapp/jenkins-pipeline-php:7.4-${COMMIT}" 'mrjeffapp/jenkins-pipeline-php:7.4'
-	docker tag 'mrjeffapp/jenkins-pipeline-php:7.4' 'mrjeffapp/jenkins-pipeline-php:latest'
+
+	docker build ${CACHE} -t "mrjeffapp/jenkins-pipeline-php:8.1-${COMMIT}" --build-arg php_version=8.1 -f php/Dockerfile .
+	docker tag "mrjeffapp/jenkins-pipeline-php:8.1-${COMMIT}" 'mrjeffapp/jenkins-pipeline-php:8.1'
+	docker tag 'mrjeffapp/jenkins-pipeline-php:8.1' 'mrjeffapp/jenkins-pipeline-php:latest'
 
 test-php:
 	docker run "mrjeffapp/jenkins-pipeline-php:7.2-${COMMIT}" php --version
 	docker run "mrjeffapp/jenkins-pipeline-php:7.2-${COMMIT}" composer --version
-	docker run mrjeffapp/jenkins-pipeline-php:7.4 php --version
-	docker run mrjeffapp/jenkins-pipeline-php:7.4 composer --version
-	docker run mrjeffapp/jenkins-pipeline-php:latest php --version
-	docker run mrjeffapp/jenkins-pipeline-php:latest composer --version
+	docker run "mrjeffapp/jenkins-pipeline-php:7.4-${COMMIT}" php --version
+	docker run "mrjeffapp/jenkins-pipeline-php:7.4-${COMMIT}" composer --version
+	docker run "mrjeffapp/jenkins-pipeline-php:8.1-${COMMIT}" php --version
+	docker run "mrjeffapp/jenkins-pipeline-php:8.1-${COMMIT}" composer --version
 
 push-php:
 	docker push "mrjeffapp/jenkins-pipeline-php:7.2-${COMMIT}"
 	docker push "mrjeffapp/jenkins-pipeline-php:7.2"
 	docker push "mrjeffapp/jenkins-pipeline-php:7.4-${COMMIT}"
 	docker push "mrjeffapp/jenkins-pipeline-php:7.4"
+	docker push "mrjeffapp/jenkins-pipeline-php:8.1-${COMMIT}"
+	docker push "mrjeffapp/jenkins-pipeline-php:8.1"
 	docker push "mrjeffapp/jenkins-pipeline-php:latest"
 
 build-node: build-base
